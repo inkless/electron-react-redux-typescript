@@ -61,7 +61,10 @@ module.exports = merge.smart(baseConfig, {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
-    new UglifyJsPlugin(),
+    new UglifyJsPlugin({
+      parallel: true,
+      sourceMap: true,
+    }),
     new ExtractTextPlugin('style.css'),
     new BundleAnalyzerPlugin({
       analyzerMode: process.env.OPEN_ANALYZER === 'true' ? 'server' : 'disabled',

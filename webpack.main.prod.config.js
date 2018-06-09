@@ -8,7 +8,10 @@ module.exports = merge.smart(baseConfig, {
   mode: 'production',
 
   plugins: [
-    new UglifyJsPlugin(),
+    new UglifyJsPlugin({
+      parallel: true,
+      sourceMap: true,
+    }),
     new BundleAnalyzerPlugin({
       analyzerMode: process.env.OPEN_ANALYZER === 'true' ? 'server' : 'disabled',
       openAnalyzer: process.env.OPEN_ANALYZER === 'true',
