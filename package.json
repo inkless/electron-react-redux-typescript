@@ -12,7 +12,7 @@
     "dist": "npm run build && electron-builder",
     "lint": "tslint '{src,test,mocks}/**/*.{ts,tsx}' --project ./tsconfig.json",
     "pack": "npm run build && electron-builder --dir",
-    "postinstall": "electron-builder install-app-deps",
+    "postinstall": "npm run build:dll && electron-builder install-app-deps",
     "precommit": "lint-staged",
     "prestart": "npm run build",
     "pretest:e2e": "npm run build",

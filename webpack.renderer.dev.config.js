@@ -16,9 +16,9 @@ const manifest = path.resolve(dist, 'renderer-manifest.json')
  */
 if (!(fs.existsSync(dist) && fs.existsSync(manifest))) {
   console.log(
-    'The DLL files are missing. Sit back while we build them for you with "npm run build-dll"'
+    'The DLL files are missing. Sit back while we build them for you with "npm run build:dll"'
   )
-  execSync('npm run build-dll')
+  execSync('npm run build:dll')
 }
 
 module.exports = merge.smart(baseConfig, {
