@@ -4,7 +4,7 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const { spawn, execSync } = require('child_process')
 
-const baseConfig = require('./webpack.renderer.config')
+const baseConfig = require('./webpack.base.config')
 
 const port = process.env.PORT || 1212
 const publicPath = `http://localhost:${port}/dist`
@@ -26,12 +26,14 @@ module.exports = merge.smart(baseConfig, {
 
   target: 'electron-renderer',
 
-  entry: [
-    'react-hot-loader/patch',
-    `webpack-dev-server/client?http://localhost:${port}/`,
-    'webpack/hot/only-dev-server',
-    path.join(__dirname, 'src/app.tsx'),
-  ],
+  entry: {
+    app: [
+      'react-hot-loader/patch',
+      `webpack-dev-server/client?http://localhost:${port}/`,
+      'webpack/hot/only-dev-server',
+      path.join(__dirname, 'src/renderer/index.tsx'),
+    ],
+  },
 
   output: {
     publicPath,
@@ -43,8 +45,34 @@ module.exports = merge.smart(baseConfig, {
       {
         test: /\.tsx?$/,
         include: [path.resolve(__dirname, 'src')],
-        exclude: [path.resolve(__dirname, 'src', 'main.ts')],
-        loaders: ['ts-loader'],
+        exclude: [path.resolve(__dirname, 'src', 'main')],
+        loader: 'ts-loader',
+      },
+      {
+        test: /\.scss$/,
+        loaders: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.css$/,
+        loaders: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/,
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true,
+            },
+          },
+        ],
+      },
+      // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        loader: 'source-map-loader',
       },
     ],
   },

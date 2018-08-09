@@ -11,14 +11,14 @@ module.exports = merge.smart(baseConfig, {
   target: 'electron-main',
 
   entry: {
-    main: './src/main.ts',
+    main: './src/main/index.ts',
   },
 
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        include: [path.resolve(__dirname, 'src', 'main.ts')],
+        include: [path.resolve(__dirname, 'src', 'main')],
         loader: 'ts-loader',
       },
     ],

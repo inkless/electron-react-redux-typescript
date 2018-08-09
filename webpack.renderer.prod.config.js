@@ -11,7 +11,7 @@ module.exports = merge.smart(baseConfig, {
   target: 'electron-renderer',
 
   entry: {
-    app: './src/app.tsx',
+    app: './src/renderer/index.tsx',
   },
 
   mode: 'production',
@@ -58,9 +58,6 @@ module.exports = merge.smart(baseConfig, {
   },
 
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production'),
-    }),
     new UglifyJsPlugin({
       parallel: true,
       sourceMap: true,
@@ -69,6 +66,9 @@ module.exports = merge.smart(baseConfig, {
     new BundleAnalyzerPlugin({
       analyzerMode: process.env.OPEN_ANALYZER === 'true' ? 'server' : 'disabled',
       openAnalyzer: process.env.OPEN_ANALYZER === 'true',
+    }),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'production',
     }),
   ],
 })

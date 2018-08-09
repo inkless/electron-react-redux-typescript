@@ -1,8 +1,9 @@
-import { Dispatch, connect } from 'react-redux';
+import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
 
-import Counter from '../components/Counter';
-import { RootState } from '../reducers';
-import { CounterAction, decrement, increment } from '../actions/counterActions';
+import Counter from 'components/Counter';
+import { RootState } from 'store/reducers';
+import { CounterAction, decrement, increment } from './actions';
 
 const mapStateToProps = (state: RootState) => ({
   value: state.counter.value
