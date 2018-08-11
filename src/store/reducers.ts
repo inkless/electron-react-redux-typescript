@@ -1,6 +1,6 @@
 import { RouterState } from 'connected-react-router';
-import { Reducer, combineReducers } from 'redux';
-import { CounterState, counterReducer } from 'containers/Counter/reducers';
+import { combineReducers } from 'redux';
+import { CounterState, counterReducer } from '@src/containers/Counter/reducers';
 
 export interface RootState {
   counter: CounterState;

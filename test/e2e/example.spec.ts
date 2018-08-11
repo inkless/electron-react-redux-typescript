@@ -20,6 +20,7 @@ describe('Main window', () => {
     if (app.isRunning()) {
       return app.stop();
     }
+    return;
   });
 
   it('opens the window', async () => {
@@ -32,9 +33,10 @@ describe('Main window', () => {
   });
 
   it('increments the counter', async () => {
-    const { client, browserWindow } = app;
+    const { client } = app;
 
     await client.waitUntilWindowLoaded();
+    await client.click('nav a:last-child');
     await client.click('#increment');
 
     const counterText = await client.getText('#counter-value');
@@ -43,9 +45,10 @@ describe('Main window', () => {
   });
 
   it('decrements the counter', async () => {
-    const { client, browserWindow } = app;
+    const { client } = app;
 
     await client.waitUntilWindowLoaded();
+    await client.click('nav a:last-child');
     await client.click('#decrement');
 
     const counterText = await client.getText('#counter-value');

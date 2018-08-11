@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { INCREMENT, DECREMENT } from './types';
+import { INCREMENT, DECREMENT } from './constants';
 import { CounterAction } from './actions';
 
 export interface CounterState {

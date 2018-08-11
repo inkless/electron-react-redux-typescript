@@ -1,5 +1,5 @@
 import { Action, ActionCreator } from 'redux';
-import { INCREMENT, DECREMENT } from './types';
+import { INCREMENT, DECREMENT } from './constants';
 
 export interface IncrementAction extends Action {
   type: INCREMENT;
