@@ -1,19 +1,9 @@
-import { Action, ActionCreator } from 'redux';
-import { INCREMENT, DECREMENT } from './constants';
+import { ActionType, createStandardAction } from 'typesafe-actions';
 
-export interface IncrementAction extends Action {
-  type: INCREMENT;
-}
-export interface DecrementAction extends Action {
-  type: DECREMENT;
-}
+const INCREMENT = '@@Counter/INCREMENT';
+const DECREMENT = '@@Counter/DECREMENT';
 
-export const increment: ActionCreator<IncrementAction> = () => ({
-  type: INCREMENT
-});
+export const increment = createStandardAction(INCREMENT)();
+export const decrement = createStandardAction(DECREMENT)();
 
-export const decrement: ActionCreator<DecrementAction> = () => ({
-  type: DECREMENT
-});
-
-export type CounterAction = IncrementAction | DecrementAction;
+export type CounterAction = ActionType<typeof increment> | ActionType<typeof decrement>;

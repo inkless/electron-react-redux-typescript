@@ -3,12 +3,12 @@ import * as React from 'react';
 import './style.scss';
 import * as RedCubeJpg from './RedCube.jpg';
 
-export interface Props {
+type Props = {
   value: number;
 
-  incrementValue: () => any;
-  decrementValue: () => any;
-}
+  incrementValue: () => void;
+  decrementValue: () => void;
+};
 
 const Counter: React.SFC<Props> = ({ value, incrementValue, decrementValue }) => (
   <div className="counter">

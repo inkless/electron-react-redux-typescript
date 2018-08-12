@@ -1,29 +1,29 @@
 import { Reducer } from 'redux';
-import { INCREMENT, DECREMENT } from './constants';
-import { CounterAction } from './actions';
+import { getType } from 'typesafe-actions';
+import { CounterAction, increment, decrement } from './actions';
 
-export interface CounterState {
-  readonly value: number;
-}
+export type CounterState = Readonly<{
+  value: number;
+}>;
 
 const defaultState: CounterState = {
-  value: 0
+  value: 0,
 };
 
 export const counterReducer: Reducer<CounterState> = (
   state = defaultState,
-  action: CounterAction
+  action: CounterAction,
 ) => {
   switch (action.type) {
-    case INCREMENT:
+    case getType(increment):
       return {
         ...state,
-        value: state.value + 1
+        value: state.value + 1,
       };
-    case DECREMENT:
+    case getType(decrement):
       return {
         ...state,
-        value: state.value - 1
+        value: state.value - 1,
       };
     default:
       return state;

@@ -1,12 +1,10 @@
 import { RouterState } from 'connected-react-router';
+import { StateType } from 'typesafe-actions';
 import { combineReducers } from 'redux';
-import { CounterState, counterReducer } from '@src/containers/Counter/reducers';
-
-export interface RootState {
-  counter: CounterState;
-  router: RouterState;
-}
+import { counterReducer } from '@src/containers/Counter/reducers';
 
 export const rootReducer = combineReducers({
-  counter: counterReducer
+  counter: counterReducer,
 });
+
+export type RootState = StateType<typeof rootReducer> & { router: RouterState };
