@@ -15,3 +15,5 @@ export const Button = styled<ButtonProps, 'button'>('button')`
     props.isActive ? props.theme.primaryColor : props.theme.primaryColorInverted};
   color: ${props => (props.isActive ? props.theme.primaryColorInverted : props.theme.primaryColor)};
 `;
+
+Button.displayName = 'Button';
