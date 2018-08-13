@@ -4,6 +4,7 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
 
+import { theme, ThemeProvider } from '../styles';
 import App from './App';
 import store, { history } from '../store';
 
@@ -12,12 +13,14 @@ const render = (App: () => JSX.Element) => {
   ReactDOM.render(
     <AppContainer>
       <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <App />
-        </ConnectedRouter>
+        <ThemeProvider theme={theme}>
+          <ConnectedRouter history={history}>
+            <App />
+          </ConnectedRouter>
+        </ThemeProvider>
       </Provider>
     </AppContainer>,
-    document.getElementById('root')
+    document.getElementById('root'),
   );
 };
 
