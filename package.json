@@ -8,6 +8,7 @@
     "build:dll": "cross-env NODE_ENV=development webpack --config webpack.renderer.dev.dll.js",
     "build:main": "cross-env NODE_ENV=production webpack --config webpack.main.prod.config.js",
     "build:renderer": "cross-env NODE_ENV=production webpack --config webpack.renderer.prod.config.js",
+    "build-storybook": "build-storybook",
     "dev": "cross-env START_HOT=1 npm run start:renderer:dev",
     "dist": "npm run build && electron-builder",
     "lint": "tslint '{src,test,mocks}/**/*.{ts,tsx}' --project ./tsconfig.json",
@@ -19,12 +20,13 @@
     "start": "cross-env NODE_ENV=production electron .",
     "start:main:dev": "webpack --config webpack.main.config.js && electron .",
     "start:renderer:dev": "webpack-dev-server --config webpack.renderer.dev.config.js",
+    "storybook": "start-storybook -p 6006",
     "test": "jest '(\\/test\\/(?!e2e/)).*'",
     "test:e2e": "jest '(\\/test\\/e2e/).*'",
     "test:watch": "npm test -- --watch"
   },
   "lint-staged": {
-    "{src,test,mocks}/**/*.{js,ts,tsx,json,css,scss,md}": [
+    "{src,test,mocks}/**/*.{js,ts,tsx,json,css,md}": [
       "prettier --config ./.prettierrc --write",
       "git add"
     ],
@@ -47,7 +49,7 @@
     ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/mocks/fileMock.js",
-      "\\.(s?css|sass)$": "<rootDir>/mocks/styleMock.js"
+      "\\.(s?css)$": "<rootDir>/mocks/styleMock.js"
     }
   },
   "build": {
@@ -85,6 +87,11 @@
   },
   "homepage": "https://github.com/inkless/electron-react-redux-typescript",
   "devDependencies": {
+    "@storybook/addon-actions": "^4.0.0-alpha.16",
+    "@storybook/addon-info": "^4.0.0-alpha.16",
+    "@storybook/addon-links": "^4.0.0-alpha.16",
+    "@storybook/addons": "^4.0.0-alpha.16",
+    "@storybook/react": "^4.0.0-alpha.16",
     "@types/electron-devtools-installer": "^2.2.0",
     "@types/jest": "^23.3.1",
     "@types/react": "^16.4.8",
@@ -93,11 +100,13 @@
     "@types/react-redux": "^6.0.6",
     "@types/react-router-dom": "^4.3.0",
     "@types/react-test-renderer": "^16.0.2",
+    "@types/storybook__addon-actions": "^3.4.1",
+    "@types/storybook__addon-info": "^3.4.1",
+    "@types/storybook__react": "^3.0.9",
     "@types/webdriverio": "^4.10.3",
     "@types/webpack-env": "^1.13.6",
     "concurrently": "^3.6.1",
     "cross-env": "^5.2.0",
-    "css-loader": "^1.0.0",
     "electron": "^2.0.6",
     "electron-builder": "^20.27.1",
     "electron-devtools-installer": "^2.2.4",
@@ -108,12 +117,11 @@
     "image-webpack-loader": "^4.3.1",
     "jest": "^23.4.2",
     "lint-staged": "^7.2.0",
-    "node-sass": "^4.9.2",
     "prettier": "^1.14.0",
+    "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "react-hot-loader": "^4.3.4",
     "react-test-renderer": "^16.4.2",
     "redux-devtools-extension": "^2.13.5",
-    "sass-loader": "^7.1.0",
     "source-map-loader": "^0.2.3",
     "spectron": "^3.8.0",
     "style-loader": "^0.22.0",

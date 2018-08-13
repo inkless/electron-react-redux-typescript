@@ -4,6 +4,6 @@ export interface ThemeInterface {
 }
 
 export const theme = {
-  primaryColor: '#ffffff',
-  primaryColorInverted: '#000000',
+  primaryColor: '#3f51b5',
+  primaryColorInverted: '#ffffff',
 };
