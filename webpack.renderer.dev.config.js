@@ -60,6 +60,10 @@ module.exports = merge.smart(baseConfig, {
           },
         ],
       },
+      {
+        test: /\.(eot|otf|ttf|woff|woff2)$/,
+        use: 'file-loader',
+      },
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
       {
         enforce: 'pre',

@@ -1,6 +1,6 @@
-import * as React from 'react';
-import * as RedCubeJpg from './RedCube.jpg';
-import { Button } from '@src/components/base/Button';
+import React from 'react';
+import RedCubeJpg from './RedCube.jpg';
+import Button from '@src/components/Button/Button';
 
 type Props = {
   value: number;

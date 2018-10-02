@@ -1,10 +1,10 @@
 import { ConnectedRouter } from 'connected-react-router';
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
 
-import { theme, ThemeProvider } from '../styles';
+import { theme, ThemeProvider } from '@src/styled-components';
 import App from './App';
 import store, { history } from '../store';
 

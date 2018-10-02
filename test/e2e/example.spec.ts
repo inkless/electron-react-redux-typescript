@@ -1,6 +1,6 @@
 import { Application } from 'spectron';
-import * as electronPath from 'electron';
-import * as path from 'path';
+import electronPath from 'electron';
+import path from 'path';
 
 jest.setTimeout(10000);
 
@@ -10,7 +10,7 @@ describe('Main window', () => {
   beforeEach(() => {
     app = new Application({
       path: electronPath.toString(),
-      args: [path.join(__dirname, '..', '..')]
+      args: [path.join(__dirname, '..', '..')],
     });
 
     return app.start();

@@ -1,6 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import routes from '../routes';
+
+import routes from '@src/routes';
+import injectStyle from '@src/renderer/injectStyle';
+
+injectStyle();
 
 const Application = () => (
   <div>
