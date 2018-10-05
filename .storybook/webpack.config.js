@@ -1,5 +1,4 @@
 const path = require('path');
-// const TSDocgenPlugin = require('react-docgen-typescript-webpack-plugin');
 module.exports = (baseConfig, env, config) => {
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
@@ -8,7 +7,14 @@ module.exports = (baseConfig, env, config) => {
       require.resolve('react-docgen-typescript-loader'),
     ],
   });
-  // config.plugins.push(new TSDocgenPlugin()); // optional
+  const svgRule = config.module.rules.find(rule => {
+    return rule.test.source === '\\.svg$'
+  });
+  if (svgRule) {
+    delete svgRule.loader;
+    svgRule.use = ['@svgr/webpack', 'file-loader'];
+  }
+
   config.resolve.extensions.push('.ts', '.tsx');
   config.resolve.alias = {
     '@src': path.resolve(__dirname, '../src'),

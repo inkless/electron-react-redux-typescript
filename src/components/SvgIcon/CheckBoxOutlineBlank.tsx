@@ -1,10 +1,4 @@
-import React from 'react';
-import createSvgIcon from '@src/utils/createSvgIcon';
+import createSvgIcon from '@src/components/SvgIcon/util';
+import { ReactComponent as CheckBoxOutlineBlank } from '@src/assets/svg/check_box_outline_blank.svg';
 
-export default createSvgIcon(
-  <React.Fragment>
-    <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />
-    <path fill="none" d="M0 0h24v24H0z" />
-  </React.Fragment>,
-  'CheckBoxOutlineBlank',
-);
+export default createSvgIcon(CheckBoxOutlineBlank, 'CheckBoxOutlineBlank');

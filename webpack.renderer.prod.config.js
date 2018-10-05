@@ -28,7 +28,7 @@ module.exports = merge.smart(baseConfig, {
         loader: 'ts-loader',
       },
       {
-        test: /\.(gif|png|jpe?g|svg)$/,
+        test: /\.(gif|png|jpe?g)$/,
         use: [
           'file-loader',
           {
@@ -38,6 +38,10 @@ module.exports = merge.smart(baseConfig, {
             },
           },
         ],
+      },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack', 'file-loader'],
       },
       {
         test: /\.(eot|otf|ttf|woff|woff2)$/,
