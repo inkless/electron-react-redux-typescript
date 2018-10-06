@@ -44,8 +44,6 @@ module.exports = merge.smart(baseConfig, {
     rules: [
       {
         test: /\.tsx?$/,
-        include: [path.resolve(__dirname, 'src')],
-        exclude: [path.resolve(__dirname, 'src', 'main')],
         loader: 'ts-loader',
       },
       {
