@@ -1,7 +1,6 @@
 import React from 'react';
 import { fontSize, textColor, FontSizeProps, TextColorProps } from 'styled-system';
 import styled, { css, ThemedProps } from '@src/styled-components';
-import { filterProps } from '@src/utils/filterProps';
 
 export type Props = {
   variant?: 'primary' | 'secondary';
@@ -17,13 +16,8 @@ const transitionStyle = css<ThemedProps<Props>>`
     })};
 `;
 
-function createSvgIcon(Component: React.SFC, displayName: string) {
-  const Svg: React.SFC<Props> = props => {
-    const next = filterProps(props);
-    return <Component {...next} />;
-  };
-
-  const SvgIcon = styled(Svg)`
+function createSvgIcon(Component: React.SFC<Props>) {
+  const SvgIcon = styled(Component)`
     user-select: none;
     width: 1em;
     height: 1em;
@@ -43,9 +37,9 @@ function createSvgIcon(Component: React.SFC, displayName: string) {
     variant: 'primary',
   };
 
-  const Icon: React.SFC<Props> = props => <SvgIcon {...props} />;
-  Icon.displayName = `${displayName}Icon`;
-  return Icon;
+  SvgIcon.displayName = `${Component.name.replace(/^Svg/, '')}Icon`;
+
+  return SvgIcon;
 }
 
 export default createSvgIcon;
