@@ -14,9 +14,10 @@ matrix:
       language: node_js
       node_js: "10"
 
+# npm ci does not work with this
 cache:
   directories:
-    - node_modules
+    # - node_modules
     - $HOME/.cache/electron
     - $HOME/.cache/electron-builder
 
