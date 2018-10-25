@@ -26,15 +26,18 @@ module.exports = merge.smart(baseConfig, {
       },
       {
         test: /\.(gif|png|jpe?g)$/,
-        use: [
-          'file-loader',
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              bypassOnDebug: true,
-            },
-          },
-        ],
+        use: 'file-loader',
+        // Travis cannot pass due to this
+        // Comment it out for now
+        // use: [
+        //   'file-loader',
+        //   {
+        //     loader: 'image-webpack-loader',
+        //     options: {
+        //       bypassOnDebug: true,
+        //     },
+        //   },
+        // ],
       },
       {
         test: /\.svg$/,
